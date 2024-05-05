@@ -1,0 +1,1 @@
+char* concatenate_strings(const char* str1, const char* str2);
