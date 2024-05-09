@@ -52,3 +52,26 @@
     * str1 = "aaaaaaaa..."
     * str2 = "bbbbbbbb..."
     
+## Running FastAPI in the Docker Container
+1. Build the image based on the Dockerfile.
+    `docker build .`
+
+2. Get the image ID.
+    `docker images`
+
+3. Run a container using the image generated from step 1. Port 8000 of the local network is mapped to the port 8000 of the container.
+    `docker run -p 8000:8000 <image_id>`
+
+4. Get the container ID.
+    `docker ps`
+
+4. To run the test.
+    `docker exec -it <container_id> pytest`
+
+5. Open your browser and try the example urls above for example http://localhost:8000/concatenate?str1=abc&str2=xyz
+
+### Tagging an image
+By tagging the image, we dont need to copy paste the image id. Step 1 to 3 can be replaced by the 2 commands below. The argument for -t is `docker_id/project_name:version`
+
+    docker build -t yungfai/fastapiapp .
+    docker run -p 8000:8000 yungfai/fastapiapp
